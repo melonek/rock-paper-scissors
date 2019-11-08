@@ -21,23 +21,31 @@ function convertToWord(letter) {
 }
 
 function win(userChoice, computerChoice) {
+  const smallUserWord = "user".fontsize(3).sub();
+  const smallCompWord = "comp".fontsize(3).sub();
   userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  const smallUserWord = "user".fontsize(3).sub();
-  const smallCompWord = "comp".fontsize(3).sub();
   result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} beats
     ${convertToWord(computerChoice)}${smallCompWord}. You win! `;
+  document.getElementById(userChoice).classList.add("green-glow");
+  setTimeout(function() {
+    document.getElementById(userChoice).classList.remove("green-glow");
+  }, 300);
 }
 
 function lose(userChoice, computerChoice) {
+  const smallUserWord = "user".fontsize(3).sub();
+  const smallCompWord = "comp".fontsize(3).sub();
   computerScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  const smallUserWord = "user".fontsize(3).sub();
-  const smallCompWord = "comp".fontsize(3).sub();
   result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} loses to
       ${convertToWord(computerChoice)}${smallCompWord}. You lost...! `;
+  document.getElementById(userChoice).classList.add("red-glow");
+  setTimeout(function() {
+    document.getElementById(userChoice).classList.remove("red-glow");
+  }, 300);
 }
 
 function draw(userChoice, computerChoice) {
@@ -45,6 +53,10 @@ function draw(userChoice, computerChoice) {
   const smallCompWord = "comp".fontsize(3).sub();
   result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} equals
         ${convertToWord(computerChoice)}${smallCompWord}. It's a draw. `;
+  document.getElementById(userChoice).classList.add("gray-glow");
+  setTimeout(function() {
+    document.getElementById(userChoice).classList.remove("gray-glow");
+  }, 300);
 }
 
 function game(userChoice) {
